@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.bit.model.MyCalc;
+
 
 @WebServlet("/calc.do")
 public class CalcController extends HttpServlet {
@@ -19,12 +21,29 @@ public class CalcController extends HttpServlet {
 		int su2=Integer.parseInt(request.getParameter("su2"));
 		
 		// su1+su2=?
-		int sum=0;
-		for(int i=su1;i<=su2;i++) {
-			sum+=i;
-		}
+		// 비지니스로직 -> Model로 분리하기
+		/*
+		 * int sum=0; for(int i=su1;i<=su2;i++) { sum+=i; }
+		 */
+		
+		MyCalc my=new MyCalc();
+		int sum=my.hap(su1, su2);
+		
+		// 응답하는 부분(프리젠테이션 로직=View=JSP)
 		PrintWriter out=response.getWriter();
-		out.println("total="+sum);
+		out.println("<html>");
+		out.println("<body>");
+		out.println("<table border='1'>");
+		out.println("<tr>");
+		out.println("<td>TOTAL</td>");
+		out.println("<td>");
+		out.println(sum);
+		out.println("</td>");
+		out.println("</tr>");
+		out.println("</table>");
+		out.println("</body>");
+		out.println("</html>");
+		
 	}
 
 }
