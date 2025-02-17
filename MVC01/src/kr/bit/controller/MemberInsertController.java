@@ -15,6 +15,7 @@ public class MemberInsertController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
+		request.setCharacterEncoding("utf-8");
 		// 1. 파라메터 수집(VO)
 		String id=request.getParameter("id");
 		String pass=request.getParameter("pass");
@@ -32,7 +33,7 @@ public class MemberInsertController extends HttpServlet {
 		vo.setEmail(email);
 		vo.setPhone(phone);
 		
-		System.out.println(vo); //vo.toString
+		//System.out.println(vo); //vo.toString
 		
 	}
 
