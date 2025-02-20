@@ -21,6 +21,7 @@ public class MemberListController extends HttpServlet {
 		MemberDAO dao=new MemberDAO();
 		ArrayList<MemberVO> list=dao.memberList();
 		// 3. 회원 전체 리스트를 HTML로 만들어서 응답하기
+		// 4...
 
 	}
 
